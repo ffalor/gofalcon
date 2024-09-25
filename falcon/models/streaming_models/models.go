@@ -4,7 +4,7 @@ import "encoding/json"
 
 // EventItem - The structure for parent model
 type EventItem struct {
-	Event    Event    `json:"event" validate:"dive"`
+	Event    Event    `json:"event"    validate:"dive"`
 	Metadata Metadata `json:"metadata"`
 }
 
@@ -27,7 +27,9 @@ type Event struct {
 	Success           *bool   `json:"Success,omitempty"`
 	ComputerName      *string `json:"ComputerName,omitempty"`
 	DetectDescription *string `json:"DetectDescription,omitempty"`
+	Description       *string `json:"Description,omitempty"`
 	DetectID          *string `json:"DetectId,omitempty"`
+	CompositeID       *string `json:"CompositeId,omitempty"`
 	FalconHostLink    *string `json:"FalconHostLink,omitempty"`
 
 	IOARuleInstanceId      *string      `json:"IOARuleInstanceId,omitempty"`
@@ -42,6 +44,7 @@ type Event struct {
 	ProcessId                     *IntOrString             `json:"ProcessId,omitempty"`
 	UserName                      *string                  `json:"UserName,omitempty"`
 	DetectName                    *string                  `json:"DetectName,omitempty"`
+	Name                          *string                  `json:"Name,omitempty"`
 	CommandLine                   *string                  `json:"CommandLine,omitempty"`
 	MD5                           *string                  `json:"MD5String,omitempty"`
 	SHA1                          *string                  `json:"SHA1String,omitempty"`
@@ -117,9 +120,9 @@ type AuditKeyValues struct {
 // NetworkAccess - Network access information for this detection
 type NetworkAccess struct {
 	ConnectionDirection int    `json:"ConnectionDirection"`
-	LocalAddress        string `json:"LocalAddress" validate:"ip"`
+	LocalAddress        string `json:"LocalAddress"        validate:"ip"`
 	LocalPort           *int64 `json:"LocalPort"`
-	Protocol            string `json:"Protocol" validate:"oneof=tcp TCP udp UDP"`
-	RemoteAddress       string `json:"RemoteAddress" validate:"ip"`
+	Protocol            string `json:"Protocol"            validate:"oneof=tcp TCP udp UDP"`
+	RemoteAddress       string `json:"RemoteAddress"       validate:"ip"`
 	RemotePort          *int64 `json:"RemotePort"`
 }
