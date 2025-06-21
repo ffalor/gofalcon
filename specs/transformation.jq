@@ -190,6 +190,9 @@
 # Allow an empty string be passed to assignment_rule
  | .definitions."host_groups.UpdateGroupReqV1".properties.assignment_rule += {"x-nullable": true}
 
+# Allow an empty string be passed to description on content update policy
+ | .definitions."content_update.UpdatePolicyReqV1".properties.description += {"x-nullable": true}
+
  # Allow expiration to be nullable
  | .definitions."api.IndicatorCreateReqV1".properties.expiration += {"x-nullable": true}
 
